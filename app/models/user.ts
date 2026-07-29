@@ -24,5 +24,5 @@ export default class User extends compose(UserSchema, withAuthFinder(hash)) {
   declare categories: HasMany<typeof Category>
 
   @hasMany(() => Transaction)
-  declare transaction: HasMany<typeof Transaction>
+  declare transactions: HasMany<typeof Transaction>
 }
