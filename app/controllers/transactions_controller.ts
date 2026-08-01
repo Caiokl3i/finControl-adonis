@@ -1,15 +1,33 @@
 import TransactionTransformer from '#transformers/transaction_transformer'
-import { createTransactionValidator } from '#validators/transaction'
+import { createTransactionValidator, filterTransactionValidator, updateTransactionValidator } from '#validators/transaction'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class TransactionsController {
   /**
    * Display a list of resource
    */
-  async index({ auth, serialize }: HttpContext) {
+  async index({ auth, serialize, request }: HttpContext) {
     const user = auth.getUserOrFail()
+    const filters = await request.validateUsing(filterTransactionValidator, {
+      data: request.qs()
+    })
 
-    const transactions = await user.related('transactions').query().orderBy('id', 'desc')
+    const transactions = await user
+      .related('transactions')
+      .query()
+      .if(filters.type, (query) => {
+        query.where('type', filters.type!)
+      })
+      .if(filters.category, (query) => {
+        query.where('category_id', filters.category!)
+      })
+      .if(filters.month, (query) => {
+        query.whereRaw('CAST(strftime("%m", date) AS INTEGER) = ?', [filters.month!])
+      })
+      .if(filters.year, (query) => {
+        query.whereRaw('CAST(strftime("%Y", date) AS INTEGER) = ?', [filters.year!])
+      })
+      .orderBy('date', 'desc')
 
     return serialize(TransactionTransformer.transform(transactions))
   }
@@ -42,7 +60,7 @@ export default class TransactionsController {
    */
   async update({ auth, params, request, serialize }: HttpContext) {
     const user = auth.getUserOrFail()
-    const payload = await request.validateUsing(createTransactionValidator)
+    const payload = await request.validateUsing(updateTransactionValidator)
 
     const transaction = await user.related('transactions').query().where('id', params.id).firstOrFail() 
 
