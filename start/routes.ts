@@ -38,3 +38,6 @@ router
 
 router.get('/dashboard', [controllers.Dashboard, 'index'])
   .use(middleware.auth())
+
+router.get('/statistics', [controllers.Statistics, 'index'])
+  .use(middleware.auth())

@@ -127,4 +127,16 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/dashboard_controller').default['index']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
+  'statistics.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/statistics'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: ExtractQueryForGet<InferInput<(typeof import('#validators/statistic').StatisticValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/statistics_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/statistics_controller').default['index']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
 }

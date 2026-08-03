@@ -66,6 +66,12 @@ const routes = {
     tokens: [{"old":"/dashboard","type":0,"val":"dashboard","end":""}],
     types: placeholder as Registry['dashboard.index']['types'],
   },
+  'statistics.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/statistics',
+    tokens: [{"old":"/statistics","type":0,"val":"statistics","end":""}],
+    types: placeholder as Registry['statistics.index']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

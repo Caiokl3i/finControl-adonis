@@ -14,18 +14,21 @@ export type ScannedRoutes = {
     'categories.categories.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'categories.categories.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'dashboard.index': { paramsTuple?: []; params?: {} }
+    'statistics.index': { paramsTuple?: []; params?: {} }
   }
   GET: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
     'categories.categories.index': { paramsTuple?: []; params?: {} }
     'categories.categories.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'dashboard.index': { paramsTuple?: []; params?: {} }
+    'statistics.index': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
     'categories.categories.index': { paramsTuple?: []; params?: {} }
     'categories.categories.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'dashboard.index': { paramsTuple?: []; params?: {} }
+    'statistics.index': { paramsTuple?: []; params?: {} }
   }
   POST: {
     'auth.new_account.store': { paramsTuple?: []; params?: {} }

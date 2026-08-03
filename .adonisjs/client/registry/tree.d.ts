@@ -30,4 +30,7 @@ export interface ApiDefinition {
   dashboard: {
     index: typeof routes['dashboard.index']
   }
+  statistics: {
+    index: typeof routes['statistics.index']
+  }
 }
