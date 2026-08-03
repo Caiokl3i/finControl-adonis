@@ -36,3 +36,5 @@ router
   .as('categories')
   .use(middleware.auth())
 
+router.get('/dashboard', [controllers.Dashboard, 'index'])
+  .use(middleware.auth())

@@ -8,27 +8,63 @@ const placeholder: any = {}
 const routes = {
   'auth.new_account.store': {
     methods: ["POST"],
-    pattern: '/api/v1/auth/signup',
-    tokens: [{"old":"/api/v1/auth/signup","type":0,"val":"api","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"v1","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"auth","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"signup","end":""}],
+    pattern: '/auth/signup',
+    tokens: [{"old":"/auth/signup","type":0,"val":"auth","end":""},{"old":"/auth/signup","type":0,"val":"signup","end":""}],
     types: placeholder as Registry['auth.new_account.store']['types'],
   },
   'auth.access_tokens.store': {
     methods: ["POST"],
-    pattern: '/api/v1/auth/login',
-    tokens: [{"old":"/api/v1/auth/login","type":0,"val":"api","end":""},{"old":"/api/v1/auth/login","type":0,"val":"v1","end":""},{"old":"/api/v1/auth/login","type":0,"val":"auth","end":""},{"old":"/api/v1/auth/login","type":0,"val":"login","end":""}],
+    pattern: '/auth/login',
+    tokens: [{"old":"/auth/login","type":0,"val":"auth","end":""},{"old":"/auth/login","type":0,"val":"login","end":""}],
     types: placeholder as Registry['auth.access_tokens.store']['types'],
   },
   'profile.profile.show': {
     methods: ["GET","HEAD"],
-    pattern: '/api/v1/account/profile',
-    tokens: [{"old":"/api/v1/account/profile","type":0,"val":"api","end":""},{"old":"/api/v1/account/profile","type":0,"val":"v1","end":""},{"old":"/api/v1/account/profile","type":0,"val":"account","end":""},{"old":"/api/v1/account/profile","type":0,"val":"profile","end":""}],
+    pattern: '/account/profile',
+    tokens: [{"old":"/account/profile","type":0,"val":"account","end":""},{"old":"/account/profile","type":0,"val":"profile","end":""}],
     types: placeholder as Registry['profile.profile.show']['types'],
   },
   'profile.access_tokens.destroy': {
     methods: ["POST"],
-    pattern: '/api/v1/account/logout',
-    tokens: [{"old":"/api/v1/account/logout","type":0,"val":"api","end":""},{"old":"/api/v1/account/logout","type":0,"val":"v1","end":""},{"old":"/api/v1/account/logout","type":0,"val":"account","end":""},{"old":"/api/v1/account/logout","type":0,"val":"logout","end":""}],
+    pattern: '/account/logout',
+    tokens: [{"old":"/account/logout","type":0,"val":"account","end":""},{"old":"/account/logout","type":0,"val":"logout","end":""}],
     types: placeholder as Registry['profile.access_tokens.destroy']['types'],
+  },
+  'categories.categories.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/categories',
+    tokens: [{"old":"/categories","type":0,"val":"categories","end":""}],
+    types: placeholder as Registry['categories.categories.index']['types'],
+  },
+  'categories.categories.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/categories/:id',
+    tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['categories.categories.show']['types'],
+  },
+  'categories.categories.store': {
+    methods: ["POST"],
+    pattern: '/categories',
+    tokens: [{"old":"/categories","type":0,"val":"categories","end":""}],
+    types: placeholder as Registry['categories.categories.store']['types'],
+  },
+  'categories.categories.update': {
+    methods: ["PUT"],
+    pattern: '/categories/:id',
+    tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['categories.categories.update']['types'],
+  },
+  'categories.categories.destroy': {
+    methods: ["DELETE"],
+    pattern: '/categories/:id',
+    tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['categories.categories.destroy']['types'],
+  },
+  'dashboard.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/dashboard',
+    tokens: [{"old":"/dashboard","type":0,"val":"dashboard","end":""}],
+    types: placeholder as Registry['dashboard.index']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 

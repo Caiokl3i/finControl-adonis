@@ -18,4 +18,16 @@ export interface ApiDefinition {
       destroy: typeof routes['profile.access_tokens.destroy']
     }
   }
+  categories: {
+    categories: {
+      index: typeof routes['categories.categories.index']
+      show: typeof routes['categories.categories.show']
+      store: typeof routes['categories.categories.store']
+      update: typeof routes['categories.categories.update']
+      destroy: typeof routes['categories.categories.destroy']
+    }
+  }
+  dashboard: {
+    index: typeof routes['dashboard.index']
+  }
 }
