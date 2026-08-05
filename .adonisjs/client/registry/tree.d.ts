@@ -27,6 +27,15 @@ export interface ApiDefinition {
       destroy: typeof routes['categories.categories.destroy']
     }
   }
+  transactions: {
+    transactions: {
+      index: typeof routes['transactions.transactions.index']
+      store: typeof routes['transactions.transactions.store']
+      show: typeof routes['transactions.transactions.show']
+      update: typeof routes['transactions.transactions.update']
+      destroy: typeof routes['transactions.transactions.destroy']
+    }
+  }
   dashboard: {
     index: typeof routes['dashboard.index']
   }

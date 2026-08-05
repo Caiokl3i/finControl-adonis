@@ -22,10 +22,10 @@ export default class TransactionsController {
         query.where('category_id', filters.category!)
       })
       .if(filters.month, (query) => {
-        query.whereRaw('CAST(strftime("%m", date) AS INTEGER) = ?', [filters.month!])
+        query.whereRaw("CAST(strftime('%m', date) AS INTEGER) = ?", [filters.month!])
       })
       .if(filters.year, (query) => {
-        query.whereRaw('CAST(strftime("%Y", date) AS INTEGER) = ?', [filters.year!])
+        query.whereRaw("CAST(strftime('%Y', date) AS INTEGER) = ?", [filters.year!])
       })
       .orderBy('date', 'desc')
 

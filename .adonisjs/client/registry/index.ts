@@ -60,6 +60,36 @@ const routes = {
     tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['categories.categories.destroy']['types'],
   },
+  'transactions.transactions.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/transactions',
+    tokens: [{"old":"/transactions","type":0,"val":"transactions","end":""}],
+    types: placeholder as Registry['transactions.transactions.index']['types'],
+  },
+  'transactions.transactions.store': {
+    methods: ["POST"],
+    pattern: '/transactions',
+    tokens: [{"old":"/transactions","type":0,"val":"transactions","end":""}],
+    types: placeholder as Registry['transactions.transactions.store']['types'],
+  },
+  'transactions.transactions.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/transactions/:id',
+    tokens: [{"old":"/transactions/:id","type":0,"val":"transactions","end":""},{"old":"/transactions/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['transactions.transactions.show']['types'],
+  },
+  'transactions.transactions.update': {
+    methods: ["PUT"],
+    pattern: '/transactions/:id',
+    tokens: [{"old":"/transactions/:id","type":0,"val":"transactions","end":""},{"old":"/transactions/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['transactions.transactions.update']['types'],
+  },
+  'transactions.transactions.destroy': {
+    methods: ["DELETE"],
+    pattern: '/transactions/:id',
+    tokens: [{"old":"/transactions/:id","type":0,"val":"transactions","end":""},{"old":"/transactions/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['transactions.transactions.destroy']['types'],
+  },
   'dashboard.index': {
     methods: ["GET","HEAD"],
     pattern: '/dashboard',

@@ -16,8 +16,8 @@ export default class DashboardController {
         const base = () => user
             .related('transactions')
             .query()
-            .whereRaw('CAST(strftime("%m", date) AS INTEGER) = ?', [month])
-            .whereRaw('CAST(strftime("%Y", date) AS INTEGER) = ?', [year])
+            .whereRaw("CAST(strftime('%m', date) AS INTEGER) = ?", [month])
+            .whereRaw("CAST(strftime('%Y', date) AS INTEGER) = ?", [year])
 
         const incomeResult = await base()
             .where('type', 'income')

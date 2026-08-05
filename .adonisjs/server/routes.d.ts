@@ -13,6 +13,11 @@ export type ScannedRoutes = {
     'categories.categories.store': { paramsTuple?: []; params?: {} }
     'categories.categories.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'categories.categories.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'transactions.transactions.index': { paramsTuple?: []; params?: {} }
+    'transactions.transactions.store': { paramsTuple?: []; params?: {} }
+    'transactions.transactions.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'transactions.transactions.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'transactions.transactions.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'dashboard.index': { paramsTuple?: []; params?: {} }
     'statistics.index': { paramsTuple?: []; params?: {} }
   }
@@ -20,6 +25,8 @@ export type ScannedRoutes = {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
     'categories.categories.index': { paramsTuple?: []; params?: {} }
     'categories.categories.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'transactions.transactions.index': { paramsTuple?: []; params?: {} }
+    'transactions.transactions.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'dashboard.index': { paramsTuple?: []; params?: {} }
     'statistics.index': { paramsTuple?: []; params?: {} }
   }
@@ -27,6 +34,8 @@ export type ScannedRoutes = {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
     'categories.categories.index': { paramsTuple?: []; params?: {} }
     'categories.categories.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'transactions.transactions.index': { paramsTuple?: []; params?: {} }
+    'transactions.transactions.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'dashboard.index': { paramsTuple?: []; params?: {} }
     'statistics.index': { paramsTuple?: []; params?: {} }
   }
@@ -35,12 +44,15 @@ export type ScannedRoutes = {
     'auth.access_tokens.store': { paramsTuple?: []; params?: {} }
     'profile.access_tokens.destroy': { paramsTuple?: []; params?: {} }
     'categories.categories.store': { paramsTuple?: []; params?: {} }
+    'transactions.transactions.store': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'categories.categories.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'transactions.transactions.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'categories.categories.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'transactions.transactions.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {
