@@ -35,9 +35,22 @@ export default class TransactionsController {
   /**
    * Handle form submission for the create action
    */
-  async store({ auth, request, serialize }: HttpContext) {
+  async store({ auth, request, serialize, response }: HttpContext) {
     const user = auth.getUserOrFail()
     const payload = await request.validateUsing(createTransactionValidator)
+
+    
+    const category = await user
+      .related('categories')
+      .query()
+      .where('id', payload.categoryId)
+      .first()
+    
+    if(!category) {
+      return response.notFound({
+        message: 'Category not found'
+      })
+    }
 
     const transaction = await user.related('transactions').create(payload)
 
@@ -58,10 +71,23 @@ export default class TransactionsController {
   /**
    * Handle form submission for the edit action
    */
-  async update({ auth, params, request, serialize }: HttpContext) {
+  async update({ auth, params, request, serialize, response }: HttpContext) {
     const user = auth.getUserOrFail()
     const payload = await request.validateUsing(updateTransactionValidator)
 
+    if(payload.categoryId) {
+      const category = await user
+        .related('categories')
+        .query()
+        .where('id', payload.categoryId!)
+        .first()
+      
+      if(!category) {
+        return response.notFound({
+          message: 'Category not found'
+        })
+      }
+    }
     const transaction = await user.related('transactions').query().where('id', params.id).firstOrFail() 
 
     transaction.merge(payload)

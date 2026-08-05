@@ -18,7 +18,7 @@ export const createTransactionValidator = vine.create({
  * an existing transaction.
  */
 export const updateTransactionValidator = vine.create({
-    category_id: vine.number().withoutDecimals().positive().optional(),
+    categoryId: vine.number().withoutDecimals().positive().optional(),
     description: vine.string().trim().minLength(1).maxLength(255).optional(),
     amount: vine.number().positive().decimal([0, 2]).optional(),
     type: vine.enum(['income', 'expense']).optional(),

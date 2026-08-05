@@ -36,8 +36,21 @@ router
   .as('categories')
   .use(middleware.auth())
 
+router
+  .group(() => {
+    router.get('/', [controllers.Transactions, 'index'])
+    router.post('/', [controllers.Transactions, 'store'])
+    router.get('/:id', [controllers.Transactions, 'show'])
+    router.put('/:id', [controllers.Transactions, 'update'])
+    router.delete('/:id', [controllers.Transactions, 'destroy'])
+  })
+  .prefix('transactions')
+  .as('transactions')
+  .use(middleware.auth())
+
 router.get('/dashboard', [controllers.Dashboard, 'index'])
   .use(middleware.auth())
 
 router.get('/statistics', [controllers.Statistics, 'index'])
   .use(middleware.auth())
+

@@ -49,10 +49,17 @@ export default class CategoriesController {
   /**
    * Delete record
    */
-  async destroy({ auth, params, }: HttpContext) {
+  async destroy({ auth, params, response }: HttpContext) {
     const user = auth.getUserOrFail()
 
     const category = await user.related('categories').query().where('id', params.id).firstOrFail()
+
+    const inUse = await category.related('transactions').query().first()
+    if(inUse) {
+      return response.conflict({
+        message: 'Category has transactions and cannot be deleted'
+      })
+    }
 
     await category.delete()
 
